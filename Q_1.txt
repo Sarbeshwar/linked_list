@@ -1,0 +1,74 @@
+import java.util.*;
+class Node
+{
+  int data;
+  Node next;
+  Node(int d)
+  {
+    this.data=d;
+  }
+}
+class Main 
+{
+  Node head;
+  public void insert(int d)
+  {
+    Node temp=new Node(d);
+    if(head==null)
+    {
+      head=temp;
+    }
+    else
+    {
+      Node ptr=head;
+      while(ptr.next!=null)
+      {
+        ptr=ptr.next;
+      }
+      ptr.next=temp;
+    }
+  }
+  public void display()
+  {
+    Node ptr=head;
+    while(ptr.next!=null)
+    {
+      System.out.print(ptr.data+" ");
+      ptr=ptr.next;
+    }
+    System.out.print(ptr.data+" ");
+  }
+  public void swap()
+  {
+    Node preptr=head;
+    Node ptr=head.next;
+    int swap=0;
+    while(ptr!=null)
+    {
+      if(ptr.data<preptr.data)
+      {
+        swap=ptr.data;
+        ptr.data=preptr.data;
+        preptr.data=swap;
+      }
+      ptr=ptr.next;
+      preptr=preptr.next;
+    }
+  }
+  
+  public static void main(String[] args)
+   {
+    Scanner sc=new Scanner(System.in);
+    Main obj=new Main();
+    int n=sc.nextInt();
+    for(int i=0;i<n;i++)
+    {
+      int num=sc.nextInt();
+      obj.insert(num);
+    }
+    obj.display();
+    obj.swap();
+    System.out.println(" ");
+    obj.display();
+  }
+}
